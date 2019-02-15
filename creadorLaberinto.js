@@ -13,11 +13,8 @@ function generarMuros(d1, d2, tipo){
 class mapaBase{
     constructor(dimension){
         this.murosH =  generarMuros(dimension-1, dimension, true);
-        console.log(this.murosH);
         this.murosV = generarMuros(dimension, dimension-1, true);
-        console.log(this.murosH);
         this.secciones = generarMuros(dimension, dimension, 0);
-        console.log(this.secciones);
     }
 }
 
