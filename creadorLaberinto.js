@@ -1,59 +1,50 @@
 "use strict"
-class SeccionLaberinto{
+function generarMuros(d1, d2, tipo){
+    let filas = [];
+    for(let i = 0;i<d1;i++){
+        let columnas = [];
+        for(let j = 0;j<d2;j++){
+            columnas.push(tipo);
+        }
+        filas.push(columnas);
+    }
+    return filas;
+}
+class mapaBase{
+    constructor(dimension){
+        this.murosH =  generarMuros(dimension-1, dimension, true);
+        console.log(this.murosH);
+        this.murosV = generarMuros(dimension, dimension-1, true);
+        console.log(this.murosH);
+        this.secciones = generarMuros(dimension, dimension, 0);
+        console.log(this.secciones);
+    }
+}
 
-    constructor(){
-        this.muros = [];
-        for(let i=0;i<4;i++){
-            this.muros[i] ={
-                nombre : "",
-                hayMuro : true
+class Visitador{
+    constructor(codigo=0, x=0, y=0, mapa=[], semilla=Math){
+        this.recorridos = [];
+        this.codigo = codigo;
+        this.posX = x;
+        this.posY = y;
+        this.mapa = mapa;
+        this.semilla = semilla;
+    }
+
+    siguiente(){
+        let posiblesCaminos = comprobarProximos();
+    }
+
+    comprobarProximos(){
+        let posiblesCaminos = [];
+        let auxPos = [-1,0];
+        for(let i = 4;i < 4;i++){
+            let valor = mapa[this.posY+auxPos[0]][this.posX+auxPos[1]].estadoSeccion.visitador;
+            if(valor!=this.codigo && valor!=undefined){
+                posiblesCaminos.push(auxPos);
             }
+            auxPos = [auxPos[1],-auxPos[0]]
         }
-        this.muros[0].nombre = "top";
-        this.muros[1].nombre = "right";
-        this.muros[2].nombre = "down";
-        this.muros[3].nombre = "left";
-    }
-
-    set estadoMuro(muro){
-        switch(muro){
-            case "top":
-                this.muros[0].hayMuro = false;
-                break;
-            case "right":
-                this.muros[1].hayMuro = false;
-                break;
-            case "down":
-                this.muros[2].hayMuro = false;
-                break;
-            case "left":
-                this.muros[3].hayMuro = false;
-                break;
-        }
-    }
-}
-
-class EstadoSeccion{
-    constructor() {
-        this.colVisitadores = [];
-        this.visitado = false;
-    }
-
-    set visitado(visitador){
-        this.visitado = true;
-        this.colVisitadores.push(visitador);
-    }
-
-    set nuevoVisitador(visitador){
-        this.colVisitadores.push(visitador);
-    }
-}
-
-class ElementoLaberinto{
-    constructor(x,y){
-        this.x = x;
-        this.y = y;
-        this.seccion = new SeccionLaberinto();
-        this.estadoSeccion = new EstadoSeccion();
+        return posiblesCaminos;
     }
 }

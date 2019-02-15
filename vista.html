@@ -2,8 +2,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="estiloCanvas.css">
     </head>
     <body>
-        
+        <main>
+            <h1 class="centerH">Pruebas Iniciales</h1>
+            <div id="divCanvas" class="centerH">
+                <canvas class="centerH" id="myCanvas" width="500" height="450"></canvas>
+                <input type="text" name="semilla" id="semillaID" class="centerH" placeholder="semilla" maxlength="4">
+                <input type="button" value="generar" id="generar">
+                <input type="button" value="iniciar" id="iniciar">
+            </div>
+        </main>
+        <script src="creadorLaberinto.js"></script>
+        <script src="graficos.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>

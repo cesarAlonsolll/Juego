@@ -1,0 +1,16 @@
+#myCanvas{
+    display: block;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+}
+#divCanvas{
+    width: 500px;
+}
+h1{
+    text-align: center;
+}
+.centerH{
+    position: relative;
+    margin: auto;
+}
