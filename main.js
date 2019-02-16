@@ -1,10 +1,6 @@
 "use strict"
-let mapa = new mapaBase(10);
 let myCanvas = document.getElementById("myCanvas");
 let ctx = myCanvas.getContext("2d");
 let camara = new Camara(ctx, ctx.canvas.width, ctx.canvas.height);
-let semilla = new Semilla(1232);
-for(let i = 0;i<10;i++){
-    console.log(semilla.random());
-}
-camara.setAmbiente = mapa;//PROBANDO EL DIBUJO DEL MAPA
+let semilla = null;
+let mapaBase = null;

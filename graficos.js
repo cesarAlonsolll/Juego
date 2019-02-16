@@ -23,7 +23,7 @@ class Camara{
     }
 }
 
-class Objetos{
+class ObjetoDibujable{
 
 }
 

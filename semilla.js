@@ -1,6 +1,6 @@
 "use strict"
 class Semilla{
-    constructor(semilla=Math.random()){
+    constructor(semilla=(Math.random()*630360016)){
         this.semilla = semilla;
     }
 
