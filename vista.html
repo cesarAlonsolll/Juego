@@ -2,8 +2,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="estiloCanvas.css">
     </head>
     <body>
-        
+        <main>
+            <h1 class="centerH">Pruebas Iniciales</h1>
+            <div id="divCanvas" class="centerH">
+                <canvas class="centerH" id="myCanvas" width="500" height="450"></canvas>
+                <input type="text" name="semilla" id="semillaID" class="centerH" placeholder="semilla" maxlength="5">
+                <select name="tamaño" id="tamañoMapa">
+                    <option value="">tamaño(random)</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+                <input type="button" value="generar" id="generar">
+                <select name="dificultad" id="dificultad">
+                    <option value="1">facil</option>
+                    <option value="2">medio</option>
+                    <option value="3">dificil</option>
+                </select>
+                <input type="button" value="iniciar" id="iniciar">
+            </div>
+        </main>
+        <script src="Concurrent.Thread-full-20090713.js"></script>
+        <script src="eventos.js"></script>
+        <script src="semilla.js"></script>
+        <script src="creadorLaberinto.js"></script>
+        <script src="graficos.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>
