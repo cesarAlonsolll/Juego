@@ -21,12 +21,14 @@ class Camara{
     set setAmbiente(ambiente){
         this.ambiente = ambiente;
     }
+}
 
-    dibujarMapaBasico(){
+class Objetos{
 
-    }
 }
 
 class Ambiente{
-    
+    constructor(muros){
+
+    }
 }

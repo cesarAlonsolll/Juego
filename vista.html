@@ -10,10 +10,23 @@
             <div id="divCanvas" class="centerH">
                 <canvas class="centerH" id="myCanvas" width="500" height="450"></canvas>
                 <input type="text" name="semilla" id="semillaID" class="centerH" placeholder="semilla" maxlength="4">
+                <select name="tamaño" id="tamañoMapa">
+                    <option value="">tamaño Mapa</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
                 <input type="button" value="generar" id="generar">
+                <select name="dificultad" id="dificultad">
+                    <option value="1">facil</option>
+                    <option value="2">medio</option>
+                    <option value="3">dificil</option>
+                </select>
                 <input type="button" value="iniciar" id="iniciar">
             </div>
         </main>
+        <script src="eventos.js"></script>
+        <script src="semilla.js"></script>
         <script src="creadorLaberinto.js"></script>
         <script src="graficos.js"></script>
         <script src="main.js"></script>
