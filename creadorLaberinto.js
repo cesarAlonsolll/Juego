@@ -19,6 +19,12 @@ class MapaBase{
     }
 }
 
+class transformadorMuros{
+    constructor(murosH, murosV){
+        
+    }
+}
+
 class Visitador{
     constructor(codigo=0, x=0, y=0, mapa=null, semillaG=Math){
         this.recorridos = [];

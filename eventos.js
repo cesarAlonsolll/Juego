@@ -23,5 +23,4 @@ document.getElementById("generar").onclick = function (){
     }
     mapaBase = new MapaBase(dimension);
     (new Visitador(1, Math.floor(semilla.random()*dimension), Math.floor(semilla.random()*dimension), mapaBase, semilla)).comenzarRecorrido();
-    console.log(mapaBase);
 };

@@ -28,7 +28,33 @@ class ObjetoDibujable{
 }
 
 class Ambiente{
-    constructor(muros){
+    constructor(array){
+        this.objetos = {
+            muros: array,
+            elementos: [],
+            personajes: []
+        };
+    }
 
+    set addPersonaje(personaje){
+        this.objetos.personajes.push(personaje);
+    }
+
+    set addElemnto(elemnto){
+        this.objetos.elementos.push(elemnto);
+    }
+
+    deletePersonaje(personaje){
+        let index = this.objetos.personajes.indexOf(personaje);
+        if(index!=-1){
+            this.objetos.personajes.splice(index,1);
+        }
+    }
+
+    deleteElemento(elemnto){
+        index = this.objetos.elementos.indexOf(elemnto);
+        if(index!=-1){
+            this.objetos.elementos.splice(index,1);
+        }
     }
 }
