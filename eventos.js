@@ -19,7 +19,7 @@ document.getElementById("generar").onclick = function (){
         dimension = parseInt(document.getElementById("tamañoMapa").value);
     }
     else{
-        dimension = (Math.floor(Math.random()*3)+1)*5;
+        dimension = (Math.floor(Math.random()*5)+1)*5;
     }
     mapaBase = new MapaBase(dimension);
     (new Visitador(1, Math.floor(semilla.random()*dimension), Math.floor(semilla.random()*dimension), mapaBase, semilla)).comenzarRecorrido();
