@@ -1,2 +1,6 @@
 "use strict"
-class Objeto
+class Objeto{
+    constructor(poligonos){
+        this.forma = poligonos;
+    }
+}
