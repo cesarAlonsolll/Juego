@@ -13,10 +13,80 @@ function generarMatriz(d1, d2, tipo){
 
 class MapaBase{
     constructor(dimension){
+        this.dimension = dimension;
         this.murosH =  generarMatriz(dimension-1, dimension, true);
         this.murosV = generarMatriz(dimension, dimension-1, true);
         this.secciones = generarMatriz(dimension, dimension, 0);
     }
+}
+
+class transformadorMuros{
+    constructor(mapaBase=null, width=0, height=0){
+        this.mapaBase = mapaBase;
+        this.seccionMinX = width/this.mapaBase.dimension;
+        this.seccionMinY = height/this.mapaBase.dimension;
+    }
+
+    get getObjetosMuros(){
+        let listaObjetos = [];
+        listaObjetos = listaObjetos.concat(this.comprobarMuros(this.mapaBase.murosH, this.seccionMinX, this.seccionMinY));
+        listaObjetos = listaObjetos.concat(this.comprobarMuros(this.mapaBase.murosV, this.seccionMinX, this.seccionMinY));
+        return listaObjetos;
+    }
+
+    comprobarMuros(muros=[], dx=0, dy=0){
+        let aux = muros.length<muros[0].length ? [0,1,0] : [1,0,1];
+        let auxArray = [];
+        let du = muros.length<muros[0].length ? [dx,1] : [1,dy];
+        for(let i = 0;i<muros.length;i++){
+            for(let j = 0;j<muros[0].length;j++){
+                if(muros[i][j]){
+                    auxArray.push(this.generarObjetoConPoligono([(j+aux[0])*dx,(i+aux[1])*dy],du,aux[2]));
+                }
+            }
+        }
+        return auxArray;
+    }
+
+    generarObjetoConPoligono(coordenadas, du, resta){
+        let auxCoordenadas = resta==0 ? [coordenadas[0],coordenadas[1]-0.5] : [coordenadas[0]-0.5,coordenadas[1]];
+        let poligono = new Poligono();
+        let vertices = [];
+        let aristas = [];
+        let direccion = [1,0];
+        for(let i = 0;i<4;i++){
+            vertices.push(new Vertice(("v"+(i+1)),auxCoordenadas));
+            auxCoordenadas = [auxCoordenadas[0]+(du[0]*direccion[0]),auxCoordenadas[1]+(du[1]*direccion[1])];
+            direccion = [direccion[1]*-1,direccion[0]];
+        }
+        poligono.setVertices = vertices;
+        for(let i = 0;i<4;i++){
+            aristas.push(new Arista(("a"+(i+1)),[vertices[i],vertices[(i+1)%4]]));
+        }
+        poligono.setAristas = aristas;
+        return (new Objeto(poligono));
+    }
+}
+
+class Poligono{
+
+    set setVertices(vertices){
+        this.vertices = vertices;
+    }
+
+    set setAristas(aristas){
+        this.aristas = aristas;
+    }
+}
+
+function Vertice(id="", coordenadas=[]){
+    this.id = id;
+    this.coordenadas = coordenadas;
+}
+
+function Arista(id="", vertices=[]){
+    this.id = id;
+    this.verticesContiguos = vertices;
 }
 
 class Visitador{
@@ -41,7 +111,7 @@ class Visitador{
         }
     }
 
-    siguiente(num){
+    siguiente(){
         this.mapa.secciones[this.posY][this.posX] = this.codigo;
         let posiblesCaminos = this.comprobarProximos();
         if(posiblesCaminos.length==0){
@@ -49,7 +119,7 @@ class Visitador{
                 let aux = this.recorridos.pop();
                 this.posY = aux[0];
                 this.posX = aux[1];
-                this.siguiente(num);
+                this.siguiente();
             }
         }
         else{
@@ -58,7 +128,7 @@ class Visitador{
             this.modificarMuro([this.posY,this.posX],posiblesCaminos[camino]);
             this.posY += posiblesCaminos[camino][0];
             this.posX += posiblesCaminos[camino][1];
-            this.siguiente(num+1);
+            this.siguiente();
         }
     }
 
