@@ -35,7 +35,7 @@ class Camara{
 
     aumentarZoom(){
         if(this.coeficienteCamara<this.MAX_COEFICIENTE_C){
-            this.coeficienteCamara+=((this.MAX_COEFICIENTE_C-Camara.MIN_COEFICIENTE_C)/10);
+            this.coeficienteCamara+=((this.MAX_COEFICIENTE_C-Camara.MIN_COEFICIENTE_C)/this.MAX_COEFICIENTE_C);
             if(this.coeficienteCamara>this.MAX_COEFICIENTE_C){
                 this.coeficienteCamara = this.MAX_COEFICIENTE_C;
             }
@@ -46,7 +46,7 @@ class Camara{
 
     disminuirZoom(){
         if(this.coeficienteCamara>Camara.MIN_COEFICIENTE_C){
-            this.coeficienteCamara-=((this.MAX_COEFICIENTE_C-Camara.MIN_COEFICIENTE_C)/10);
+            this.coeficienteCamara-=((this.MAX_COEFICIENTE_C-Camara.MIN_COEFICIENTE_C)/this.MAX_COEFICIENTE_C);
             if(this.coeficienteCamara<Camara.MIN_COEFICIENTE_C){
                 this.coeficienteCamara = Camara.MIN_COEFICIENTE_C;
             }
