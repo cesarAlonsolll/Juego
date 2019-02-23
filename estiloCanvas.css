@@ -12,5 +12,5 @@ h1{
 }
 .centerH{
     position: relative;
-    margin: auto;
+    margin: 0 auto;
 }

@@ -5,4 +5,4 @@ let camara = new Camara(ctx, ctx.canvas.width, ctx.canvas.height);
 let semilla = null;
 let mapaBase = null;
 let ambiente = null;
-requestAnimationFrame(draw)
+requestAnimationFrame(draw);

@@ -64,7 +64,23 @@ class transformadorMuros{
             aristas.push(new Arista(("a"+(i+1)),[vertices[i],vertices[(i+1)%4]]));
         }
         poligono.setAristas = aristas;
-        return (new Objeto(poligono));
+        return (new Objeto(poligono, "green"));
+    }
+}
+
+class Circulo{
+
+    set setRadio(radio){
+        this.radio = radio;
+    }
+
+    set setCoordenadas(coordenadas){
+        this.coordenadas = coordenadas;
+    }
+
+    actualizarPos(velX, velY){
+        this.coordenadas[0] += velX;
+        this.coordenadas[1] += velY;
     }
 }
 
@@ -76,6 +92,13 @@ class Poligono{
 
     set setAristas(aristas){
         this.aristas = aristas;
+    }
+
+    actualizarPos(velX, velY){
+        for(let i = 0; i<this.vertices.length;i++){
+            this.vertices[i][0]+=velX;
+            this.vertices[i][1]+=velY;
+        }
     }
 }
 
